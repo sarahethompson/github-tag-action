@@ -11,6 +11,7 @@ source=${SOURCE:-.}
 dryrun=${DRY_RUN:-false}
 initial_version=${INITIAL_VERSION:-0.0.0}
 tag_context=${TAG_CONTEXT:-repo}
+LABEL=${LABEL}
 
 cd ${GITHUB_WORKSPACE}/${source}
 
@@ -71,9 +72,9 @@ function default-bump {
   fi
 }
 
-# get commit logs and determine home to bump the version
+# get PR label and determine how to bump the version
 # supports #major, #minor, #patch (anything else will be 'minor')
-case "$log" in
+case "${LABEL}" in
     *#major* ) new=$(semver bump major $tag); part="major";;
     *#minor* ) new=$(semver bump minor $tag); part="minor";;
     *#patch* ) new=$(semver bump patch $tag); part="patch";;

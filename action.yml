@@ -4,6 +4,13 @@ author: 'Nick Sjostrom'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    LABEL: ${{ github.event.label.name }}
+# inputs:
+#   label:
+#     description: 'PR label to specify version increment type'
+#     required: true
+#     default: ${{ github.event.label.name }}
 outputs:
   new_tag:
     description: 'Generated tag'
