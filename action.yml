@@ -10,7 +10,7 @@ inputs:
    label:
      description: 'PR label to specify version increment type'
      required: true
-     default: ${{fromJSON(github.event.pull_request.labels)}}
+     default: ${{toJSON(github.event.pull_request.labels)}}
 outputs:
   new_tag:
     description: 'Generated tag'
