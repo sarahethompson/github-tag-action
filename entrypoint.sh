@@ -72,6 +72,8 @@ function default-bump {
   fi
 }
 
+echo $LABEL
+
 # get PR label and determine how to bump the version
 # supports #major, #minor, #patch (anything else will be 'minor')
 case "${LABEL}" in
